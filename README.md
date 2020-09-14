@@ -17,4 +17,8 @@ Create a web application which can:
 * Sending the images as response to the front end.
 * Rendering the images on the front end.
 
-
+### Plan for project 2:
+Below functionalities can be added to the project:
+* Take the existing code as reference and generate the visuals for different types of play positions.
+* Increase the test coverage.
+* Deploy in AWS.
