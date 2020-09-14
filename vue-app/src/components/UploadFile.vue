@@ -17,7 +17,7 @@
       <input type="file" ref="file" v-on:change="selectFile" />
     </label>
 
-    <button class="btn btn-success" :disabled="!selectedFiles" @click="upload">
+    <button class="btn btn-success"  @click="upload">
       Upload
     </button>
 
@@ -40,7 +40,7 @@
 
 <script>
     
-import UploadService from '@/services/UploadFileService'
+import http from "../http-common"
 export default {
 
     name:'FileUpload',
@@ -63,11 +63,18 @@ export default {
       upload() {
           this.progress = 0
           this.currentFile = this.selectedFiles.item(0)
-          UploadService.upload(this.selectedFiles, event => {
-              this.progress = Math.round((100 * event.loaded)/event.total)
-          }).then(response => {
+          console.log(this.currentFile)
+          let formData = new FormData()
+          formData.append("file", this.currentFile)
+          
+          return http.post("/upload", formData, {
+            headers: {
+                "Content-Type": "multipart/form-data"
+            }            
+            })
+          .then(response => {
               this.message = response.data.message;
-              return UploadService.getFiles()
+              return this.message
           })
           .then(files => {
           this.fileInfos = files.data;
@@ -78,13 +85,8 @@ export default {
           this.currentFile = undefined;
          });
 
-        this.selectedFiles = undefined;
       },
-    mounted() {
-        UploadService.getFiles().then(response => {
-        this.fileInfos = response.data;
-        })
-    },
+    
   }
       
 }  
