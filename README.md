@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/293692566.svg)](https://zenodo.org/badge/latestdoi/293692566)
+
 # American-Football-Analytics-Application
 
 ### YouTube Video:
