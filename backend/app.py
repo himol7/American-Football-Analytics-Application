@@ -13,16 +13,17 @@ ALLOWED_EXTENSIONS = {'csv'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 CORS(app)
 
-#
+
 def validate_extension(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
-@app.route('/upload', methods=['GET','POST'])
+@app.route('/upload', methods=['POST'])
 def upload_files():
     if request.method == 'POST':
-        
+        # logic to clean the folder
+
         # check if the request comes with the input file
         if 'file' not in request.files:
             flash('No file part')
@@ -39,9 +40,19 @@ def upload_files():
         if file and validate_extension(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            #return redirect(url_for('uploaded_file', filename=filename))
+            # return redirect(url_for('uploaded_file', filename=filename))
             return 'Saved the files to input folder'
+
+        # driver function
+
+
     return "Returning after Post"
+
+@app.route('/analysis', methods=['GET'])
+def get_match_summary():
+    return ''
+
+
 
 if __name__ == '__main__':
     app.run(debug = True)
