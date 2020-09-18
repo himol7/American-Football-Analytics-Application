@@ -21,4 +21,5 @@ Create a web application which can:
 Below functionalities can be added to the project:
 * Take the existing code as reference and generate the visuals for different types of play positions.
 * Increase the test coverage.
+* Add options for user to choose between match-wise, year-wise or season-wise statistics and generate image corresponding to respective statistic.
 * Deploy in AWS.
