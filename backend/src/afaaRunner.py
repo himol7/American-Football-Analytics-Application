@@ -9,13 +9,15 @@ Created on Thu Sep 17 19:36:42 2020
 from dataCollector import dataCollector 
 from playsSeperator import playsSeperator
 from dataAnalytics import dataAnalytics
+from photoImposer import photoImposer
 
 class afaaRunner:
     
     def  __init__(self):
         dc = dataCollector()
         ps = playsSeperator()
-        ds = dataAnalytics()
+        da = dataAnalytics()
+        pi = photoImposer()
         
         team = "NCST"
         data = dc.readfile()    
@@ -35,8 +37,7 @@ class afaaRunner:
                 formations = playData["pff_DEFPLAYERS"]
                 ratings = playData["pff_DEFPLAYERSRATINGS"]
                 
-            countsAndRatings = ds.generateTotalCountsAndRatings(formations, ratings)
-            print(playType)    
-            print(countsAndRatings)
-
+            countsAndRatings = da.generateTotalCountsAndRatings(formations, ratings)
+            pi.imposeDataOnImage(playType, countsAndRatings)            
+        
 a = afaaRunner()
