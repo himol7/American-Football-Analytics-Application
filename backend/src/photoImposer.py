@@ -6,7 +6,7 @@ Created on Fri Sep 18 13:46:38 2020
 @author: himol7
 """
 
-from photoCoordinates import photoCoordinates
+from src.photoCoordinates import photoCoordinates
 from PIL import Image, ImageFont, ImageDraw
 
 class photoImposer:

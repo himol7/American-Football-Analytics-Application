@@ -6,6 +6,8 @@ from flask import Flask, request, redirect, url_for, flash, send_file, send_from
 from flask_cors import CORS
 from werkzeug.utils import secure_filename
 
+from src.afaaRunner import afaaRunner
+
 app = Flask(__name__)
 
 # upload folder for input files
@@ -51,8 +53,8 @@ def upload_files():
             # return redirect(url_for('uploaded_file', filename=filename))
             return 'Saved the files to input folder'
 
-        # driver function
-
+        # call the driver function
+        ar = afaaRunner(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
 
     return "Returning after Post"
 
