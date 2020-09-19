@@ -25,11 +25,17 @@ class photoCoordinates:
         "L1" : (470, 140)
         }
     
-    kickoff_return_coordinates = {}
+    kickoff_return_coordinates = {
+        
+        }
     
     punt_coordinates = {}
         
-    punt_return_coordinates = {}
+    punt_return_coordinates = {
+        "VRo" : (0, 0),
+        "VRi" : (0, 0),
+        "PDR1" : (0, 0)
+        }
     
     fieldgoal_coordinates = {}
     
@@ -41,7 +47,5 @@ class photoCoordinates:
         self.allCoordinates['PUNT'] = self.punt_coordinates
         self.allCoordinates['PUNT_RETURN'] = self.punt_return_coordinates
         self.allCoordinates['FIELDGOAL'] = self.fieldgoal_coordinates
-        self.allCoordinates['FIELDGOAL_BlOCK'] = self.fieldgoal_block_coordinates
-        
-        
+        self.allCoordinates['FIELDGOAL_BLOCK'] = self.fieldgoal_block_coordinates
         
