@@ -10,8 +10,6 @@ import pandas as pd
 
 class dataCollector:
     
-    def readfile(self):
-        data = pd.read_csv('20191130 NCST K vs NCUN 31 PLAYS K.KR.P.PR.FG.FGB.csv')
+    def readfile(self, fileName):
+        data = pd.read_csv(fileName)
         return data
-
-    

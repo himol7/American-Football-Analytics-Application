@@ -6,21 +6,21 @@ Created on Thu Sep 17 19:36:42 2020
 @author: himol7
 """
 
-from dataCollector import dataCollector 
-from playsSeperator import playsSeperator
-from dataAnalytics import dataAnalytics
-from photoImposer import photoImposer
+from src.dataCollector import dataCollector
+from src.playsSeperator import playsSeperator
+from src.dataAnalytics import dataAnalytics
+from src.photoImposer import photoImposer
 
 class afaaRunner:
     
-    def  __init__(self):
+    def  __init__(self, inputFile):
         dc = dataCollector()
         ps = playsSeperator()
         da = dataAnalytics()
         pi = photoImposer()
         
         team = "NCST"
-        data = dc.readfile()    
+        data = dc.readfile(inputFile)
         
         all_plays = ps.getDataframesByPlays(team, data)
         
@@ -39,5 +39,3 @@ class afaaRunner:
                 
             countsAndRatings = da.generateTotalCountsAndRatings(formations, ratings)
             pi.imposeDataOnImage(playType, countsAndRatings)            
-        
-a = afaaRunner()
