@@ -13,7 +13,7 @@ from src.photoImposer import photoImposer
 
 class afaaRunner:
     
-    def  __init__(self, inputFile):
+    def  __init__(self, inputFile, downloadPath):
         dc = dataCollector()
         ps = playsSeperator()
         da = dataAnalytics()
@@ -38,4 +38,4 @@ class afaaRunner:
                 ratings = playData["pff_DEFPLAYERSRATINGS"]
                 
             countsAndRatings = da.generateTotalCountsAndRatings(formations, ratings)
-            pi.imposeDataOnImage(playType, countsAndRatings)            
+            pi.imposeDataOnImage(playType, countsAndRatings, downloadPath)

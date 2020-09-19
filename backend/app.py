@@ -1,4 +1,5 @@
 import os
+import sys
 from os import listdir
 from os.path import isfile
 
@@ -50,11 +51,10 @@ def upload_files():
         if file and validate_extension(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            # return redirect(url_for('uploaded_file', filename=filename))
-            return 'Saved the files to input folder'
 
-        # call the driver function
-        ar = afaaRunner(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
+            # call the driver function
+            ar = afaaRunner(os.path.join(app.config['UPLOAD_FOLDER'], file.filename), app.config['DOWNLOAD_FOLDER'])
+            return 'files saved and runner function called'
 
     return "Returning after Post"
 
