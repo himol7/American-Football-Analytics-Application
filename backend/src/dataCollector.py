@@ -14,3 +14,4 @@ class dataCollector:
         data = pd.read_csv('20191130 NCST K vs NCUN 31 PLAYS K.KR.P.PR.FG.FGB.csv')
         return data
 
+    
