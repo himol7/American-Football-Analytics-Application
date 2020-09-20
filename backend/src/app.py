@@ -10,6 +10,8 @@ from werkzeug.utils import secure_filename
 from afaaRunner import afaaRunner
 
 app = Flask(__name__, static_folder='output_files')
+app.config['SECRET_KEY'] = 'the quick brown fox jumps over the lazy   dog'
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 # upload folder for input files
 UPLOAD_FOLDER = 'input_files'
@@ -52,10 +54,11 @@ def upload_files():
         if file and validate_extension(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-
             # call the driver function
             ar = afaaRunner(os.path.join(app.config['UPLOAD_FOLDER'], file.filename), app.config['DOWNLOAD_FOLDER'])
-            return 'files saved and runner function called'
+            response = jsonify({'message': 'files saved and runner function called'})
+            response.headers.add('Access-Control-Allow-Origin', '*')
+            return response
 
     return "Returning after Post"
 
