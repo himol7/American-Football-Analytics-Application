@@ -2,16 +2,19 @@
   <div id="app">
     <div id="nav">
       <UploadFile />
+      <DisplayPhotos />
     </div>
   </div>
 </template>
 
 <script>
 import UploadFile from '@/components/UploadFile'
+import DisplayPhotos from '@/components/DisplayPhotos'
 export default {
   name: "App",
   components: {
-    UploadFile
+    UploadFile,
+    DisplayPhotos
   }
 }
 </script>

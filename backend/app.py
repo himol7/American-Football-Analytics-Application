@@ -3,13 +3,13 @@ import sys
 from os import listdir
 from os.path import isfile
 
-from flask import Flask, request, redirect, url_for, flash, send_file, send_from_directory, abort
+from flask import Flask, request, redirect, url_for, flash, send_file, send_from_directory, abort, url_for, jsonify
 from flask_cors import CORS
 from werkzeug.utils import secure_filename
 
 from src.afaaRunner import afaaRunner
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='output_files')
 
 # upload folder for input files
 UPLOAD_FOLDER = 'input_files'
@@ -70,15 +70,21 @@ def clean_directory(directory):
 
 @app.route('/analysis', methods=['GET'])
 def get_match_summary():
-    image_name = 'abc.png'
-    files = []
+    image_name = 'fieldgoal_block.png'
+    responses = []
+    counter = 0
+
     for file in listdir(app.config['DOWNLOAD_FOLDER']):
         if isfile(os.path.join(app.config['DOWNLOAD_FOLDER'], file)):
-            files.extend(file)
-    try:
-        return send_from_directory(app.config['DOWNLOAD_FOLDER'], mimetype='image/png', filename=image_name, as_attachment=False)
-    except FileNotFoundError:
-        abort(404)
+            link = "http://" + request.host + url_for('static', filename=file)
+            counter += 1
+            responses.append({"id": counter, "link": link})
+
+    return jsonify(responses)
+    # try:
+    #     return send_from_directory(app.config['DOWNLOAD_FOLDER'], mimetype='image/png', filename=image_name, as_attachment=False)
+    # except FileNotFoundError:
+    #     abort(404)
 
 
 if __name__ == '__main__':
