@@ -23,24 +23,14 @@
 
     <div class="alert alert-light" role="alert">{{ message }}</div>
 
-    <div class="card">
-      <div class="card-header"> List of files uploaded</div>
-      <ul class="list-group list-group-flush">
-        <li
-          class="list-group-item"
-          v-for="(file, index) in fileInfos"
-          :key="index"
-        >
-          <a :href="file.url">{{ file.name }}</a>
-        </li>
-      </ul>
-    </div>
   </div>
 </template>
 
 <script>
     
-import http from "../http-common"
+import http from "@/http-common"
+import { bus } from "@/event-bus"
+
 export default {
 
     name:'FileUpload',
@@ -51,7 +41,6 @@ export default {
         progress: 0,
         message: "",
 
-        fileInfos: []
       }
     },
     methods: {
@@ -73,12 +62,10 @@ export default {
             }            
             })
           .then(response => {
-              this.message = response.data.message;
-              return this.message
+              console.log("Success!")
+              bus.$emit('upload-success')
+              console.log(response.data)
           })
-          .then(files => {
-          this.fileInfos = files.data;
-         })
          .catch(() => {
           this.progress = 0;
           this.message = "Could not upload the file!";
