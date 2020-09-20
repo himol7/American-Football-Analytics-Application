@@ -28,7 +28,7 @@
 
 <script>
     
-import http from "@/http-common"
+//import http from "@/http-common"
 import { bus } from "@/event-bus"
 
 export default {
@@ -50,27 +50,27 @@ export default {
           
       },
       upload() {
-          this.progress = 0
-          this.currentFile = this.selectedFiles.item(0)
-          console.log(this.currentFile)
-          let formData = new FormData()
-          formData.append("file", this.currentFile)
-          
-          return http.post("/upload", formData, {
-            headers: {
-                "Content-Type": "multipart/form-data"
-            }            
-            })
-          .then(response => {
-              console.log("Success!")
-              bus.$emit('upload-success')
-              console.log(response.data)
-          })
-         .catch(() => {
-          this.progress = 0;
-          this.message = "Could not upload the file!";
-          this.currentFile = undefined;
-         });
+          // this.progress = 0
+          // this.currentFile = this.selectedFiles.item(0)
+          // console.log(this.currentFile)
+          // let formData = new FormData()
+          // formData.append("file", this.currentFile)
+          bus.$emit('upload-success')
+        //   return http.post("/upload", formData, {
+        //     headers: {
+        //         "Content-Type": "multipart/form-data"
+        //     }            
+        //     })
+        //   .then(response => {
+        //       console.log("Success!")
+        //       bus.$emit('upload-success')
+        //       console.log(response.data)
+        //   })
+        //  .catch(() => {
+        //   this.progress = 0;
+        //   this.message = "Could not upload the file!";
+        //   this.currentFile = undefined;
+        //  });
 
       },
     
