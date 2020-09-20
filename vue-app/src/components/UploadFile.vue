@@ -24,7 +24,7 @@
     <div class="alert alert-light" role="alert">{{ message }}</div>
 
     <div class="card">
-      <div class="card-header">List of Files</div>
+      <div class="card-header"> List of files uploaded</div>
       <ul class="list-group list-group-flush">
         <li
           class="list-group-item"

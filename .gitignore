@@ -2,3 +2,4 @@
 **/__pycache__/
 /vue-app/node_modules
 /backend/env
+/backend/src/__pycache__
