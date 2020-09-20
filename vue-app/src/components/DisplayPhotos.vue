@@ -8,7 +8,7 @@
 
 
 <script>
-// import axios from 'axios'
+import axios from 'axios'
 import { bus } from '@/event-bus'
 
 export default {
@@ -40,20 +40,20 @@ export default {
 
     methods: {
         getReport() {
-            this.photos.push({"id": 1,"link": "https://picsum.photos/250/250/?image=54"})
-            this.photos.push({"id": 2,"link": "https://picsum.photos/250/250/?image=54"})
-            this.photos.push({"id": 3,"link": "https://picsum.photos/250/250/?image=54"})
-            this.photos.push({"id": 4,"link": "https://picsum.photos/250/250/?image=54"})
-            this.photos.push({"id": 5,"link": "https://picsum.photos/250/250/?image=54"})
-            this.photos.push({"id": 6,"link": "https://picsum.photos/250/250/?image=54"})
+            // this.photos.push({"id": 1,"link": "https://picsum.photos/250/250/?image=54"})
+            // this.photos.push({"id": 2,"link": "https://picsum.photos/250/250/?image=54"})
+            // this.photos.push({"id": 3,"link": "https://picsum.photos/250/250/?image=54"})
+            // this.photos.push({"id": 4,"link": "https://picsum.photos/250/250/?image=54"})
+            // this.photos.push({"id": 5,"link": "https://picsum.photos/250/250/?image=54"})
+            // this.photos.push({"id": 6,"link": "https://picsum.photos/250/250/?image=54"})
             
-        //     axios.get('http://localhost:5000/analysis')
-        //     .then((response) =>{
-        //         this.photos = response.data
-        //     })
-        //     .catch(function (error){
-        //         console.log(error)
-        //     })
+            axios.get('http://localhost:5000/analysis')
+            .then((response) =>{
+                this.photos = response.data
+            })
+            .catch(function (error){
+                console.log(error)
+            })
         }
     }
 }
