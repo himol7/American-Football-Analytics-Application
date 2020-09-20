@@ -19,6 +19,7 @@ DOWNLOAD_FOLDER = 'output_files'
 
 # allowed extensions for the input files
 ALLOWED_EXTENSIONS = {'csv'}
+DO_NOT_DELETE_EXTENSIONS = {'md'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['DOWNLOAD_FOLDER'] = DOWNLOAD_FOLDER
 CORS(app)
@@ -34,7 +35,7 @@ def upload_files():
     if request.method == 'POST':
         # logic to clean the folder
         clean_directory(os.path.join(app.config['UPLOAD_FOLDER']))
-
+        clean_directory(os.path.join(app.config['DOWNLOAD_FOLDER']))
         # check if the request comes with the input file
         if 'file' not in request.files:
             flash('No file part')
@@ -64,7 +65,8 @@ def clean_directory(directory):
     # get all the file names in files
     for file in listdir(directory):
         absolute_name = os.path.join(directory, file)
-        if isfile(absolute_name):
+        if isfile(absolute_name) & (file.rsplit('.', 1)[1].lower() not in DO_NOT_DELETE_EXTENSIONS):
+            print("Clearing stale files"+file.rsplit('.', 1)[1].lower())
             os.remove(absolute_name)
 
 
@@ -75,7 +77,7 @@ def get_match_summary():
     counter = 0
 
     for file in listdir(app.config['DOWNLOAD_FOLDER']):
-        if isfile(os.path.join(app.config['DOWNLOAD_FOLDER'], file)):
+        if isfile(os.path.join(app.config['DOWNLOAD_FOLDER'], file)) & (file.rsplit('.', 1)[1].lower() not in DO_NOT_DELETE_EXTENSIONS):
             link = "http://" + request.host + url_for('static', filename=file)
             counter += 1
             responses.append({"id": counter, "link": link})
