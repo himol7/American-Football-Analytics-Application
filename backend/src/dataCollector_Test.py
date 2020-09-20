@@ -2,8 +2,8 @@ from dataCollector import dataCollector
 import pandas
 import pytest
 
-dc = dataCollector()
+data_collector = dataCollector()
 
 
 def test_method():
-  assert dc.readfile() is not None
+  assert data_collector.readfile() is not Non
