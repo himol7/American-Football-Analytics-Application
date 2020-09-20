@@ -75,9 +75,8 @@ def get_match_summary():
     for file in listdir(app.config['DOWNLOAD_FOLDER']):
         if isfile(os.path.join(app.config['DOWNLOAD_FOLDER'], file)):
             files.extend(file)
-
     try:
-        return send_from_directory(app.config['DOWNLOAD_FOLDER'], filename=image_name, as_attachment=False)
+        return send_from_directory(app.config['DOWNLOAD_FOLDER'], mimetype='image/png', filename=image_name, as_attachment=False)
     except FileNotFoundError:
         abort(404)
 
