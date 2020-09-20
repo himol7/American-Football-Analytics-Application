@@ -1,18 +1,5 @@
 <template>
   <div>
-    <div v-if="currentFile" class="progress">
-      <div
-        class="progress-bar progress-bar-info progress-bar-striped"
-        role="progressbar"
-        :aria-valuenow="progress"
-        aria-valuemin="0"
-        aria-valuemax="100"
-        :style="{ width: progress + '%' }"
-      >
-        {{ progress }}%
-      </div>
-    </div>
-
     <label class="btn btn-default">
       <input type="file" ref="file" v-on:change="selectFile" />
     </label>
@@ -23,24 +10,14 @@
 
     <div class="alert alert-light" role="alert">{{ message }}</div>
 
-    <div class="card">
-      <div class="card-header"> List of files uploaded</div>
-      <ul class="list-group list-group-flush">
-        <li
-          class="list-group-item"
-          v-for="(file, index) in fileInfos"
-          :key="index"
-        >
-          <a :href="file.url">{{ file.name }}</a>
-        </li>
-      </ul>
-    </div>
   </div>
 </template>
 
 <script>
     
-import http from "../http-common"
+import http from "@/http-common"
+import { bus } from "@/event-bus"
+
 export default {
 
     name:'FileUpload',
@@ -51,14 +28,12 @@ export default {
         progress: 0,
         message: "",
 
-        fileInfos: []
       }
     },
     methods: {
      
       selectFile() {
           this.selectedFiles = this.$refs.file.files
-          
       },
       upload() {
           this.progress = 0
@@ -66,19 +41,17 @@ export default {
           console.log(this.currentFile)
           let formData = new FormData()
           formData.append("file", this.currentFile)
-          
+          bus.$emit('upload-success')
           return http.post("/upload", formData, {
             headers: {
                 "Content-Type": "multipart/form-data"
             }            
             })
           .then(response => {
-              this.message = response.data.message;
-              return this.message
+              console.log("Success!")
+              bus.$emit('upload-success')
+              console.log(response.data)
           })
-          .then(files => {
-          this.fileInfos = files.data;
-         })
          .catch(() => {
           this.progress = 0;
           this.message = "Could not upload the file!";

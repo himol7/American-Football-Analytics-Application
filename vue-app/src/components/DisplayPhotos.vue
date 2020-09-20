@@ -1,16 +1,15 @@
 <template>
-    <div> 
+    <div>
         <div v-if="isPhotoAvailable">
             <img v-for="photo in photos" :key="photo.id" :src="photo.link" />
         </div>
-        
-
     </div>
 </template>
 
 
 <script>
-import axios from 'axios';
+import axios from 'axios'
+import { bus } from '@/event-bus'
 
 export default {
     name: 'DisplayPhotos',
@@ -25,7 +24,6 @@ export default {
                 heigh1t: 400,
                 class1: 'my-5'
             },
-
             photos: []
         }
     },
@@ -34,11 +32,14 @@ export default {
             return this.photos.length > 0
         }
     },
-    beforeMount(){
-        this.getReport()
+    created() {
+        bus.$on('upload-success', () => {
+            this.getReport()
+        })
     },
+
     methods: {
-        getReport() {
+        getReport() {            
             axios.get('http://localhost:5000/analysis')
             .then((response) =>{
                 this.photos = response.data
