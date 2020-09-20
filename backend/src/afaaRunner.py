@@ -6,10 +6,17 @@ Created on Thu Sep 17 19:36:42 2020
 @author: himol7
 """
 
+<<<<<<< HEAD
 from src.dataCollector import dataCollector
 from src.playsSeperator import playsSeperator
 from src.dataAnalytics import dataAnalytics
 from src.photoImposer import photoImposer
+=======
+from dataCollector import dataCollector
+from playsSeperator import playsSeperator
+from dataAnalytics import dataAnalytics
+from photoImposer import photoImposer
+>>>>>>> 2ca6e4f726f10e81794c6b55299d20457eb0884f
 
 class afaaRunner:
     
@@ -20,6 +27,11 @@ class afaaRunner:
         pi = photoImposer()
         
         team = "NCST"
+<<<<<<< HEAD
+=======
+        print("download path = ")
+        print(downloadPath)
+>>>>>>> 2ca6e4f726f10e81794c6b55299d20457eb0884f
         data = dc.readfile(inputFile)
         
         all_plays = ps.getDataframesByPlays(team, data)
