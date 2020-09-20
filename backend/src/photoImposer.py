@@ -10,10 +10,9 @@ from photoCoordinates import photoCoordinates
 from PIL import Image, ImageFont, ImageDraw
 
 class photoImposer:
-    
+
     pc = photoCoordinates()
     allCoordinates = pc.allCoordinates
-    
     all_images = {}
     
     def __init__(self):
@@ -24,8 +23,7 @@ class photoImposer:
         self.all_images['FIELDGOAL'] = "formationImages/fieldgoal_coverage.png"
         self.all_images['FIELDGOAL_BLOCK'] = "formationImages/fieldgoal_block.png"
     
-    def imposeDataOnImage(self, playType, countsAndRatingsData):
-        
+    def imposeDataOnImage(self, playType, countsAndRatingsData, downloadPath):
         coordinates = self.allCoordinates.get(playType)
         
         image = Image.open(self.all_images.get(playType))
@@ -42,5 +40,7 @@ class photoImposer:
             color = 'rgb(0, 0, 0)'
             draw.text((x, y), message, fill=color, font=font)
         
-        imagename = playType + '_ANALYSIS.png'
+        imagename = './' + downloadPath + '/' + playType + '_ANALYSIS.png'
+        print("Image name = ")
+        print(imagename)
         image.save(imagename)

@@ -1,4 +1,6 @@
 **/.DS_Store
-**/__pycache__/
 /vue-app/node_modules
+/vue-app/package-lock.json
 /backend/env
+/env
+/backend/src/__pycache__

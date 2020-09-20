@@ -2,14 +2,22 @@ from dataAnalytics import dataAnalytics
 from playsSeperator import playsSeperator
 from dataCollector import dataCollector
 
+
+import warnings
+import pytest
+warnings.simplefilter(action='ignore', category=FutureWarning)
+
+
+da = dataAnalytics()
+dc = dataCollector()
+data = dc.readfile()
+ps = playsSeperator()
+all_plays = ps.getDataframesByPlays("NCST", data)
+offensive_plays = {"PUNT", "KICKOFF_RETURN", "FIELDGOAL"}
+defensive_plays = {"PUNT_RETURN", "KICKOFF", "FIELDGOAL_BLOCK"}
+
+
 def test03():
-  da = dataAnalytics()
-  dc = dataCollector()
-  data = dc.readfile()
-  ps = playsSeperator()
-  all_plays = ps.getDataframesByPlays("NCST", data)
-  offensive_plays = {"PUNT", "KICKOFF_RETURN", "FIELDGOAL"}
-  defensive_plays = {"PUNT_RETURN", "KICKOFF", "FIELDGOAL_BLOCK"}
 
   for playType, playData in all_plays.items():
 
@@ -23,8 +31,5 @@ def test03():
 
     countsAndRatings = da.generateTotalCountsAndRatings(formations, ratings)
 
-    if countsAndRatings is not None:
-      return ("Not Empty")
-  return ("Empty")
+    assert countsAndRatings is not None
 
-#print(test03())
