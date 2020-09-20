@@ -1,10 +1,13 @@
 import os
+import sys
 from os import listdir
 from os.path import isfile
 
 from flask import Flask, request, redirect, url_for, flash, send_file, send_from_directory, abort
 from flask_cors import CORS
 from werkzeug.utils import secure_filename
+
+from src.afaaRunner import afaaRunner
 
 app = Flask(__name__)
 
@@ -48,11 +51,10 @@ def upload_files():
         if file and validate_extension(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            # return redirect(url_for('uploaded_file', filename=filename))
-            return 'Saved the files to input folder'
 
-        # driver function
-
+            # call the driver function
+            ar = afaaRunner(os.path.join(app.config['UPLOAD_FOLDER'], file.filename), app.config['DOWNLOAD_FOLDER'])
+            return 'files saved and runner function called'
 
     return "Returning after Post"
 
@@ -73,9 +75,8 @@ def get_match_summary():
     for file in listdir(app.config['DOWNLOAD_FOLDER']):
         if isfile(os.path.join(app.config['DOWNLOAD_FOLDER'], file)):
             files.extend(file)
-
     try:
-        return send_from_directory(app.config['DOWNLOAD_FOLDER'], filename=image_name, as_attachment=False)
+        return send_from_directory(app.config['DOWNLOAD_FOLDER'], mimetype='image/png', filename=image_name, as_attachment=False)
     except FileNotFoundError:
         abort(404)
 
