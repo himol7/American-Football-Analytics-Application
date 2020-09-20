@@ -7,7 +7,7 @@ from flask import Flask, request, redirect, url_for, flash, send_file, send_from
 from flask_cors import CORS
 from werkzeug.utils import secure_filename
 
-from src.afaaRunner import afaaRunner
+from afaaRunner import afaaRunner
 
 app = Flask(__name__, static_folder='output_files')
 

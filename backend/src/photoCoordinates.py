@@ -48,4 +48,3 @@ class photoCoordinates:
         self.allCoordinates['PUNT_RETURN'] = self.punt_return_coordinates
         self.allCoordinates['FIELDGOAL'] = self.fieldgoal_coordinates
         self.allCoordinates['FIELDGOAL_BLOCK'] = self.fieldgoal_block_coordinates
-        
