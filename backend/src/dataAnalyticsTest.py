@@ -1,6 +1,8 @@
 from dataAnalytics import dataAnalytics
 from playsSeperator import playsSeperator
 from dataCollector import dataCollector
+
+
 import warnings
 import pytest
 warnings.simplefilter(action='ignore', category=FutureWarning)
@@ -16,6 +18,7 @@ defensive_plays = {"PUNT_RETURN", "KICKOFF", "FIELDGOAL_BLOCK"}
 
 
 def test03():
+
   for playType, playData in all_plays.items():
 
     if playType in offensive_plays:
