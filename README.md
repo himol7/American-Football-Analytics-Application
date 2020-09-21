@@ -1,4 +1,5 @@
 [![DOI](https://zenodo.org/badge/293692566.svg)](https://zenodo.org/badge/latestdoi/293692566)
+[![Build Status](https://travis-ci.org/himol7/American-Football-Analytics-Application.svg?branch=master)](https://travis-ci.org/himol7/American-Football-Analytics-Application)
 
 # American-Football-Analytics-Application
 
