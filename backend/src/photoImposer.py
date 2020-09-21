@@ -27,7 +27,7 @@ class photoImposer:
         coordinates = self.allCoordinates.get(playType)
         
         image = Image.open(self.all_images.get(playType))
-        font = ImageFont.truetype('arial_bold.ttf', size=10)
+        font = ImageFont.truetype('arial_bold.ttf', size=13)
         draw = ImageDraw.Draw(image)
         
         for position, positional_group in countsAndRatingsData.groupby(['POSITION']):
