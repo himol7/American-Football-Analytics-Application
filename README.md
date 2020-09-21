@@ -34,3 +34,13 @@ Below functionalities can be added to the project:
 * Improvise the front end CSS to make it  more responsive
 
 <sup>1</sup> Data file refers to the files which are used by football coaches at NC State. The original source of the files is not known to us but it is believed that the source is widely popular amongst football coaches.
+
+
+### Instructions to run:
+1. Install the dependency.
+```
+pip install -r requirements.txt
+```
+2. Please go to vue-app directory for running the front end.
+
+3. Please go to backend/src directory for running the back end.
