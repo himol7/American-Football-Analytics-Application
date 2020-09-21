@@ -76,7 +76,19 @@ class photoCoordinates:
         "PR" : (700,540)
         }
     
-    fieldgoal_coordinates = {}
+    fieldgoal_coordinates = {
+        "H" : (500, 475),
+        "K" : (0,0),
+        "FLW" : (210, 325),
+        "FLE" : (280, 315),
+        "FLT" : (350, 305),
+        "FLG" : (400, 295),
+        "FLS" : (455, 285),
+        "FRG" : (505, 295),
+        "FRT" : (555, 305),
+        "FRE" : (605, 315),
+        "FRW" : (660, 325)
+        }
     
     fieldgoal_block_coordinates = {}
     
