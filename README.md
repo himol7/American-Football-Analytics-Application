@@ -31,5 +31,6 @@ Below functionalities can be added to the project:
 * Increase the test coverage.
 * Add options for user to choose between match-wise, year-wise or season-wise statistics and generate image corresponding to respective statistic.
 * Deploy in AWS.
+* Improvise the front end CSS to make it  more responsive
 
 <sup>1</sup> Data file refers to the files which are used by football coaches at NC State. The original source of the files is not known to us but it is believed that the source is widely popular amongst football coaches.
