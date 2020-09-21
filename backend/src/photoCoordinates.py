@@ -10,6 +10,9 @@ Created on Fri Sep 18 13:47:15 2020
 class photoCoordinates:
     
     allCoordinates = {}
+
+# The positions with coordinates (0,0) were not available in experimental data. 
+# Therefore, coordinates for those positions are yet not confirmed.
     
     kickoff_coordinates = {
         "R1" : (20, 140),
@@ -34,7 +37,18 @@ class photoCoordinates:
     punt_return_coordinates = {
         "VRo" : (0, 0),
         "VRi" : (0, 0),
-        "PDR1" : (0, 0)
+        "PDR1" : (40, 300),
+        "PDR2" : (40,375),
+        "PLR" : (235,375),
+        "PDR3" : (40,425),
+        "PLM" : (0,0),
+        "PDL3" : (40,500),
+        "PDL2" : (40,575),
+        "PDL1" : (100,685),
+        "PLL" : (235,575),
+        "VL" : (100,820),
+        "PFB" : (0,0),
+        "PR" : (700,540)
         }
     
     fieldgoal_coordinates = {}

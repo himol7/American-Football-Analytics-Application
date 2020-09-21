@@ -33,6 +33,7 @@ class photoImposer:
         for position, positional_group in countsAndRatingsData.groupby(['POSITION']):
             (x, y) = (0, 0)
             if position in coordinates:
+                #print(position)
                 (x, y) = coordinates.get(position)
             message = ''
             for index, player in positional_group.iterrows():

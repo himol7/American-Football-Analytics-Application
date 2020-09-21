@@ -41,3 +41,5 @@ class afaaRunner:
                 
             countsAndRatings = da.generateTotalCountsAndRatings(formations, ratings)
             pi.imposeDataOnImage(playType, countsAndRatings, downloadPath)
+
+#ar = afaaRunner("NCSU.csv", 'output_files')
