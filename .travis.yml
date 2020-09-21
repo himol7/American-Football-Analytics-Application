@@ -5,6 +5,4 @@ python:
 install:
     - pip install -r requirements.txt
 script:
-    - python tests/DataCollecter_Test.py
-    - python tests/DataSeparatorTest.py
-    - python tests/dataAnalyticsTest.py
+    - python -m pytest
