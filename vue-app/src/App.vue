@@ -1,36 +1,40 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <b-jumbotron bg-variant = "info" text-variant="white" border-variant="dark">
-        <template v-slot:header>American Football Analytics</template>
+    <b-navbar toggleable="lg" type="dark" variant="info" >
+      <b-navbar-brand  class="mb-0" >American Football Analytics</b-navbar-brand>
+    </b-navbar>
+    <b-card title="What is this?" align="center">
+      <b-card-text>
+        We help the football coaches get performance analysis of the player's performance during the game for better strategic planning and performance monitoring.
 
-          <template v-slot:lead>
-            Helps you determine the performance of your players during game season. Because we want your team to be the best
-          </template>
+      </b-card-text>
 
-          <hr class="my-4">
+      <b-card-text></b-card-text>
 
-          <p>
-            All you need is a file to start on
-          </p>
-      </b-jumbotron>
-      </div>
+    </b-card>
+    <b-container>
       <UploadFile />
       <DisplayPhotos />
-    </div>
-  
+      <nav class="navbar fixed-bottom navbar-dark bg-info">
+        <a class="navbar-brand" href="#">
+          Made with <span style="color: #e25555;">&#9829;</span> at NC State
+
+        </a>
+      </nav>
+    </b-container>
+  </div>
 </template>
 
 <script>
-import UploadFile from '@/components/UploadFile'
-import DisplayPhotos from '@/components/DisplayPhotos'
+import UploadFile from "@/components/UploadFile";
+import DisplayPhotos from "@/components/DisplayPhotos";
 export default {
   name: "App",
   components: {
     UploadFile,
-    DisplayPhotos
-  }
-}
+    DisplayPhotos,
+  },
+};
 </script>
 <style>
 #app {
@@ -39,6 +43,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  align: center;
 }
 
 #nav {
@@ -48,10 +53,6 @@ export default {
 #nav a {
   font-weight: bold;
   color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
 }
 
 </style>

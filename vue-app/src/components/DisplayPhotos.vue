@@ -1,87 +1,92 @@
 <template>
-  <div class = "d-flex align-items-stretch">
-    
-    
+  <div class="d-flex align-items-stretch">
     <div v-if="isPhotoAvailable">
-        <b-carousel 
-            id="carousel-1"
-            v-model="slide"
-            :interval="4000"
-            controls
-            indicators
-            background="#ababab"
-            img-width = "500"
-            img-height = "00"
-            style="text-shadow: 1px 1px 2px #333;"
-            @sliding-start="onSlideStart"
-            @sliding-end="onSlideEnd"
-            v-bind="mainProps"
-        >
-          <b-carousel-slide caption="First slide" :img-src="photo.link" indicator = 'hover' v-for="photo in photos" :key="photo.id" ></b-carousel-slide>
-        
-        </b-carousel>
+        <b-card class="card" border-variant = "info">
+            <b-row>
+                <b-col cols="8">
+                    <div v-b-scrollspy:scrollspy-nested>
+                        <div>
+                            <b-card-img left :src="selectedImg.link" class="selected-img"></b-card-img>
+                        </div>
+                    </div>
+                </b-col>
+                <b-col cols="4">
+                    <b-navbar id="scrollspy-nested" class="flex-column" style="position:relative; height:550px; overflow-y:auto">
+                        <b-nav pills vertical>
+                            <b-nav-item href="#item-1" v-for="photo in photos" :key="photo.id">
+                                <b-img 
+                                    thumbnail 
+                                    fluid 
+                                    :src="photo.link" 
+                                    class="list-img"
+                                    @click="changeImage(photo)"
+                                ></b-img>
+                            </b-nav-item>
+                        </b-nav>
+                    </b-navbar>
+                </b-col>
+            </b-row>
+        </b-card>
     </div>
-    <p class="mt-4">
-      Slide #: {{ slide }}<br>
-      Sliding: {{ sliding }}
-    </p>
-    </div>
-        
-   <!-- <img v-for="photo in photos" :key="photo.id" :src="photo.link" /> -->
+  </div>
+
 </template>
 <script>
-//import axios from 'axios'
-import { bus } from '@/event-bus'
+import axios from "axios";
+import { bus } from "@/event-bus";
 
 export default {
-    name: 'DisplayPhotos',
-    data() {
-        return{
-            
-            photos: [],
-            slide: 0,
-            sliding: null
-        }
+  name: "DisplayPhotos",
+  data() {
+    return {
+        photos: [],
+        slide: 0,
+        sliding: null,
+        selectedImg: null
+    };
+  },
+  computed: {
+    isPhotoAvailable: function () {
+      return this.photos.length > 0;
     },
-    computed: {
-        isPhotoAvailable: function() {
-            return this.photos.length > 0
-        }
-    },
-    created() {
-        bus.$on('upload-success', () => {
-            this.getReport()
-        })
-    },
+  },
+  created() {
+    bus.$on("upload-success", () => {
+      this.getReport();
+    });
+  },
 
-    methods: {
-        getReport() {     
-            this.photos.push({"id": 1,"link": "https://picsum.photos/500/300/?image=50"})
-            this.photos.push({"id": 2,"link": "https://picsum.photos/400/650/?image=54"})
-            this.photos.push({"id": 3,"link": "https://picsum.photos/250/250/?image=54"})
-            this.photos.push({"id": 4,"link": "https://picsum.photos/250/250/?image=54"})
-            this.photos.push({"id": 5,"link": "https://picsum.photos/250/250/?image=54"})
-            this.photos.push({"id": 6,"link": "https://picsum.photos/250/250/?image=54"})
-                        // axios.get('http://localhost:5000/analysis')
-            // .then((response) =>{
-            //     this.photos = response.data
-            // })
-            // .catch(function (error){
-            //     console.log(error)
-            // })
-        }
+  methods: {
+    getReport() {
+      axios
+        .get("http://localhost:5000/analysis")
+        .then((response) => {
+          this.photos = response.data
+          this.selectedImg = this.photos[0]
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
+    changeImage(photo) {
+        this.selectedImg = photo
     }
-}
+  },
+};
 </script>
 <style scoped>
-.carousel {
-    align-items: center;
-    background-color: #666;
-    color: #999; 
-    display: flex;
-    font-size: 1.5rem;
-    justify-content: center;
-    min-height: 10rem;
+.list-img {
+    width: 400px;
+    height: 300px;
+}
+.selected-img {
+    width: 810px;
+    height: 550px;
+    
+}
+.card {
+    width: 1200px;
+    height: 550;
 
 }
 </style>
