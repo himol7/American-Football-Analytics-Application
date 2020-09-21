@@ -6,4 +6,4 @@ data_collector = dataCollector()
 
 
 def test_method():
-  assert data_collector.readfile('20191130 NCST K vs NCUN 31 PLAYS K.KR.P.PR.FG.FGB.csv') is not None
+  assert data_collector.readfile('https://github.com/himol7/American-Football-Analytics-Application/blob/KrisshaJ-Testing/backend/src/NCSU.csv') is not None
