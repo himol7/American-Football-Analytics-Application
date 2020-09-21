@@ -1,10 +1,24 @@
 <template>
   <div id="app">
     <div id="nav">
+      <b-jumbotron bg-variant = "info" text-variant="white" border-variant="dark">
+        <template v-slot:header>American Football Analytics</template>
+
+          <template v-slot:lead>
+            Helps you determine the performance of your players during game season. Because we want your team to be the best
+          </template>
+
+          <hr class="my-4">
+
+          <p>
+            All you need is a file to start on
+          </p>
+      </b-jumbotron>
+      </div>
       <UploadFile />
       <DisplayPhotos />
     </div>
-  </div>
+  
 </template>
 
 <script>
@@ -39,4 +53,5 @@ export default {
 #nav a.router-link-exact-active {
   color: #42b983;
 }
+
 </style>
