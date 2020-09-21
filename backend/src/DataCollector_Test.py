@@ -6,4 +6,6 @@ data_collector = dataCollector()
 
 
 def test_method():
-  assert data_collector.readfile('American-Football-Analytics-Application/backend/src/NCSU.csv') is not None
+  x = data_collector.readfile('American-Football-Analytics-Application/backend/src/NCSU.csv')
+  print (x)
+//  assert data_collector.readfile('American-Football-Analytics-Application/backend/src/NCSU.csv') is not None
