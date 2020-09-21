@@ -2,7 +2,7 @@
 
 |           What           |                                                                                           Notes                                                                                          | score 0..4 (0=no, 2=ok, 4=wow!) |
 |:------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------:|
-| Misc                     | Group members attended tutorial sessions                                                                                                                                                 |                                 |
+| Misc                     | Group members attended tutorial sessions                                                                                                                                                 |                4                |
 | Distrbuted dev model:    | decisions made by unanmyous vote}                                                                                                                                                        |                                 |
 |                          | group meetings had a round robin speaking order                                                                                                                                          |                                 |
 |                          | group meetings had a moderator that managed the round robin                                                                                                                              |                                 |
