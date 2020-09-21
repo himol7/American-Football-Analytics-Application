@@ -6,7 +6,7 @@ data_collector = dataCollector()
 
 
 def test_method():
-  data = pd.read_csv("https://github.com/himol7/American-Football-Analytics-Application/blob/KrisshaJ-Testing/backend/src/NCSU.csv")
+  data = pd.read_csv("https://github.com/himol7/American-Football-Analytics-Application/blob/KrisshaJ-Testing/backend/src/NCSU.csv", engine = 'python')
   print(data)
   #y = "https://github.com/himol7/American-Football-Analytics-Application/blob/KrisshaJ-Testing/backend/src/NCSU.csv"
   #x = data_collector.readfile(y)
