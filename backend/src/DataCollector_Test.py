@@ -6,4 +6,4 @@ data_collector = dataCollector()
 
 
 def test_method():
-  assert data_collector.readfile('/backend/src/NCSU.csv') is None
+  assert data_collector.readfile('NCSU.csv') is not None
