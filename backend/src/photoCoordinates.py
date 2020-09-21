@@ -44,7 +44,20 @@ class photoCoordinates:
         "KFB" : (1120,700)
         }
     
-    punt_coordinates = {}
+    punt_coordinates = {
+        "GL" : (100,250),
+        "P" : (620,525),
+        "PPR" : (700,450),
+        "PLW" : (450,350),
+        "PLT" : (495,150),
+        "PLG" : (560,150),
+        "PLS" : (620,130),
+        "PRG" : (700,150),
+        "PRT" : (800,150),
+        "PRW" : (800,330),
+        "PC" : (570,380),
+        "GR" : (1100,250)
+        }
         
     punt_return_coordinates = {
         "VRo" : (0, 0),
