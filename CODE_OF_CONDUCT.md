@@ -43,6 +43,9 @@ that are not aligned to this Code of Conduct, or to ban temporarily or
 permanently any contributor for other behaviors that they deem inappropriate,
 threatening, offensive, or harmful.
 
+* Theft of intellectual property will be met with actions of hightest severity. 
+* Any kinds of plagiarism will not be endorsed and strictest action will be taken against the violators.
+
 ## Scope
 
 This Code of Conduct applies both within the project spaces and in public spaces
