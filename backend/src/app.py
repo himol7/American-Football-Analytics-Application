@@ -65,6 +65,7 @@ def upload_files():
 
 # this method contains the code to clean up the files from the directory if there are any
 def clean_directory(directory):
+    print(directory)
     # get all the file names in files
     for file in listdir(directory):
         absolute_name = os.path.join(directory, file)
