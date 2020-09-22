@@ -5,9 +5,9 @@ We value your contribution. To keep everyone on the same track for contribution,
 ## Pull Request Process
 
 1. Direct merge to the master branch is neither permitted nor advised 
-2.Ensure any install or build dependencies are removed before the end of the layer when doing a build.
+2. Ensure any install or build dependencies are removed before the end of the layer when doing a build.
 3. Put comments on the lines of code you have added.
-4. Update the requirements.txt file with if you have added any dependency.
+4. Update the requirements.txt file with the dependencies if you have added any.
 5. Keep the code and data in separate folders.
 6. While adding any new code to the repository, you are expected to test your code extensively. Pull requests with less code coverage are less likely to be merged.
 7. Update the README.md with details of changes to the interface, this includes new environment variables, exposed ports, useful file locations and container parameters.
