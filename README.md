@@ -36,12 +36,27 @@ Below functionalities can be added to the project:
 
 <sup>1</sup> Data file refers to the files which are used by football coaches at NC State. The original source of the files is not known to us but it is believed that the source is widely popular amongst football coaches.
 
+### Technology Stack
+* Python Flask
+* Vue.JS
+
 
 ### Instructions to run:
-1. Install the dependency.
+1. Install the dependency for backend application.
 ```
 pip install -r requirements.txt
 ```
 2. Please go to vue-app directory for running the front end.
-
+* Make sure that npm is installed in the system
+```
+Run npm install 
+```
+* Install Vue cli
+```npm install -g @vue/cli OR yarn global add @vue/cli
+```
+* Run Vue UI
+```vue ui
+ 
+```
+For detailed steps visit[here](#https://www.telerik.com/blogs/creating-and-managing-vue-projects-with-vue-ui)
 3. Please go to backend/src directory for running the back end.
