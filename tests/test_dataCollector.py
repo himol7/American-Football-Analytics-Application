@@ -1,4 +1,4 @@
-from dataCollector import dataCollector
+from backend.src.dataCollector import dataCollector
 import pandas
 import pytest
 
