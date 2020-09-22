@@ -90,7 +90,22 @@ class photoCoordinates:
         "FRW" : (660, 325)
         }
     
-    fieldgoal_block_coordinates = {}
+    fieldgoal_block_coordinates = {
+        "FBR" : (700,150),
+        "FBM" : (900,150),
+        "FBL" : (1100,150),
+        "FR1" : (450,450),
+        "FR2" : (575,450),
+        "FR3" : (660,450),
+        "FR4" : (745,450),
+        "FR5" : (830,450),
+        "FL6" : (965,450),
+        "FL5" : (1050,450),
+        "FL4" : (1150, 450),
+        "FL3" : (1240,450),
+        "FL2" : (1325, 450),
+        "FL1" : (1410,450)
+        }
     
     def __init__(self):
         self.allCoordinates['KICKOFF'] = self.kickoff_coordinates
