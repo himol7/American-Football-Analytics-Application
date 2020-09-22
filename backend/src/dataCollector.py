@@ -12,4 +12,5 @@ class dataCollector:
     
     def readfile(self, fileName):
         data = pd.read_csv(fileName, error_bad_lines = False)
+        print(data)
         return data
