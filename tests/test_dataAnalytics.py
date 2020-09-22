@@ -1,8 +1,6 @@
-from dataAnalytics import dataAnalytics
-from playsSeperator import playsSeperator
-from dataCollector import dataCollector
-
-
+from backend.src.dataAnalytics import dataAnalytics
+from backend.src.playsSeperator import playsSeperator
+from backend.src.dataCollector import dataCollector
 import warnings
 import pytest
 warnings.simplefilter(action='ignore', category=FutureWarning)
@@ -10,7 +8,7 @@ warnings.simplefilter(action='ignore', category=FutureWarning)
 
 da = dataAnalytics()
 dc = dataCollector()
-data = dc.readfile()
+data = dc.readfile("https://github.com/himol7/American-Football-Analytics-Application/blob/KrisshaJ-Testing/backend/src/NCSU.csv?raw=true")
 ps = playsSeperator()
 all_plays = ps.getDataframesByPlays("NCST", data)
 offensive_plays = {"PUNT", "KICKOFF_RETURN", "FIELDGOAL"}
@@ -18,7 +16,6 @@ defensive_plays = {"PUNT_RETURN", "KICKOFF", "FIELDGOAL_BLOCK"}
 
 
 def test03():
-
   for playType, playData in all_plays.items():
 
     if playType in offensive_plays:
