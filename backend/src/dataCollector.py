@@ -11,5 +11,5 @@ import pandas as pd
 class dataCollector:
     
     def readfile(self, fileName):
-        data = pd.read_csv(fileName, encoding='utf8', engine='python')
+        data = pd.read_csv(fileName, error_bad_lines = False)
         return data
