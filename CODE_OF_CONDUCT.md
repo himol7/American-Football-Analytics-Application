@@ -19,6 +19,7 @@ include:
 * Gracefully accepting constructive criticism
 * Focusing on what is best for the community
 * Showing empathy towards other community members
+* Fostering a sense of community and helps each other grow
 
 Examples of unacceptable behavior by participants include:
 
@@ -30,6 +31,7 @@ Examples of unacceptable behavior by participants include:
  address, without explicit permission
 * Other conduct which could reasonably be considered inappropriate in a
  professional setting
+* Sarcastic replies on issues for people with legitimate concerns or doubts
 
 ## Our Responsibilities
 
