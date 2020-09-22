@@ -8,7 +8,7 @@ warnings.simplefilter(action='ignore', category=FutureWarning)
 
 da = dataAnalytics()
 dc = dataCollector()
-data = dc.readfile("https://github.com/himol7/American-Football-Analytics-Application/blob/KrisshaJ-Testing/backend/src/NCSU.csv")
+data = dc.readfile("https://github.com/himol7/American-Football-Analytics-Application/blob/KrisshaJ-Testing/backend/src/NCSU.csv?raw=true")
 ps = playsSeperator()
 all_plays = ps.getDataframesByPlays("NCST", data)
 offensive_plays = {"PUNT", "KICKOFF_RETURN", "FIELDGOAL"}
