@@ -19,6 +19,9 @@ In 2002, Oakland Atheltics, a seemingly medium-strength team achieved unusual su
 
 With a simple UI, all you need to do it just upload the data file<sup>1</sup> and the application promptly outputs the images where you can view your analysis. Furthermore, with some exciting features lined up, we'd be happy to incorporate some new features on demand.
 
+![abc](images/fieldgoal.jpeg)
+![abc](images/punt.jpeg)
+
 ### Plan for project 1:
 
 * Analysis of the input data with the help of python libraries.
