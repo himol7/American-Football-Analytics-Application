@@ -1,6 +1,6 @@
-from dataAnalytics import dataAnalytics
-from playsSeperator import playsSeperator
-from dataCollector import dataCollector
+from backend.src.dataAnalytics import dataAnalytics
+from backend.src.playsSeperator import playsSeperator
+from backend.src.dataCollector import dataCollector
 import warnings
 import pytest
 warnings.simplefilter(action='ignore', category=FutureWarning)
