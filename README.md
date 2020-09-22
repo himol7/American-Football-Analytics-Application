@@ -30,14 +30,11 @@ Here as you can see, Player **D28** was present **6** times on position **GL** a
 As a part of **Project 1**, we have created a functioning application which performs data analytics on games data and outputs 6 individual images for each type of play. Each of these images have summarized data of respective plays imposed on them.
 
 ### Tasks to be completed as a part of Project 2:
-Below functionalities can be added to the project:
 
 1. Add functionality to get output of multiple files at once.
 2. After 1 is finished, add functionality to get output filtered based on SEASON / MATCH WEEK / MONTH / MATCH and OPPONENT
-3. Add more metrics to analysis of data
-4. Add Drag-and-Drop functionality in the Front End.
-5. Increase test coverage
-6. Deploy on one of the Cloud Services
+3. Add Drag-and-Drop functionality in the Front End.
+4. Deploy the application on one of the publically available Cloud Services
 
 
 ### Instructions to run:
