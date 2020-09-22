@@ -1,4 +1,4 @@
-# Contributing to American-Football-Analytics-Application
+# Contributing to TouchDown
 
 We value your contribution. To keep everyone on the same track for contribution, here are some of the steps that are needed to be followed when contributing to the project.
 
@@ -12,7 +12,8 @@ We value your contribution. To keep everyone on the same track for contribution,
 6. While adding any new code to the repository, you are expected to test your code extensively. Pull requests with less code coverage are less likely to be merged.
 7. Update the README.md with details of changes to the interface, this includes new environment variables, exposed ports, useful file locations and container parameters.
 8. Increase the version numbers in any examples files and the README.md to the new version that this Pull Request would represent.
-9. You may merge the Pull Request in once someone from your team has reviewed your code.
+9. On opening a Pull Request, add team members(s) as reviwers.
+10. Make necessary changes as per code review before merging the Pull request into Master branch.
 
 ## Branch Naming guideline
 1. Feature development branch should begin with  name as "feature" eg: feature-punt-kickoff-addition
@@ -24,6 +25,7 @@ We value your contribution. To keep everyone on the same track for contribution,
 1. As far as possible follow DRY principles
 2. Create seperate branch for each feature and each pull request should only merge only one feature
 3. The code should strictly be placed in src folder and all the miscellanous activites should be outside of src branch
+4. Delete commented code statements before commiting as a part of code cleanup
 
 
 ### You are contributing to this repository which is under MIT License: 
