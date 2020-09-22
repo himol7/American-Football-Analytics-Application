@@ -52,11 +52,13 @@ pip install -r requirements.txt
 Run npm install 
 ```
 * Install Vue cli
-```npm install -g @vue/cli OR yarn global add @vue/cli
+```
+npm install -g @vue/cli OR yarn global add @vue/cli
 ```
 * Run Vue UI
-```vue ui
+```
+vue ui
  
 ```
-For detailed steps visit[here](#https://www.telerik.com/blogs/creating-and-managing-vue-projects-with-vue-ui)
+For detailed steps visit[here](https://www.telerik.com/blogs/creating-and-managing-vue-projects-with-vue-ui)
 3. Please go to backend/src directory for running the back end.
