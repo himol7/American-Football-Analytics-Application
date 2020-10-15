@@ -10,6 +10,7 @@ from dataCollector import dataCollector
 from playsSeperator import playsSeperator
 from dataAnalytics import dataAnalytics
 from photoImposer import photoImposer
+import pandas as pd
 
 class afaaRunner:
     
@@ -22,8 +23,14 @@ class afaaRunner:
         team = "NCST"
         print("download path = ")
         print(downloadPath)
-        data = dc.readfile(inputFile)
-        
+        if(len(inputFile) == 1):
+            data = dc.readfile(inputFile[0])
+        else:
+            data=dc.readfile(inputFile[0])
+            for i in range(1,len(inputFile)):
+                df2=dc.readfile(inputFile[i])
+                data=pd.concat([data,df2])
+        print(data)
         all_plays = ps.getDataframesByPlays(team, data)
         
         offensive_plays = {"PUNT", "KICKOFF_RETURN", "FIELDGOAL"}

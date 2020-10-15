@@ -18,6 +18,7 @@
         </a>
       </nav>
     </b-container>
+    <upload-files></upload-files>
   </div>
 </template>
 

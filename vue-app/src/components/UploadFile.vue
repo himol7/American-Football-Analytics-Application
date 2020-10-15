@@ -1,58 +1,105 @@
 <template>
-  <div class ="col-sm-3 col-sm-5" > <br>
-    
-        <input type="file" ref="file" v-on:change="selectFile" variant="outline-info">
-     
-        <b-button class="btn btn-info" @click="upload">Upload</b-button>
-              
-  
-    
-    <div class="alert alert-light" role="alert">{{ message }}</div>
+<div>
+    <div v-if="progressInfos">
+      <div class="mb-2"
+        v-for="(progressInfo, index) in progressInfos"
+        :key="index"
+      >
+        <span>{{progressInfo.fileName}}</span>
+        <div class="progress">
+          <div class="progress-bar progress-bar-info"
+            role="progressbar"
+            :aria-valuenow="progressInfo.percentage"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            :style="{ width: progressInfo.percentage + '%' }"
+          >
+            {{progressInfo.percentage}}%
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <label class="btn btn-default">
+      <input type="file" multiple @change="selectFile" />
+    </label>
+
+    <button class="btn btn-success"
+      :disabled="!selectedFiles"
+      @click="uploadFiles"
+    >
+      Upload
+    </button>
+
+    <div v-if="message" class="alert alert-light" role="alert">
+      <ul>
+        <li v-for="(ms, i) in message.split('\n')" :key="i">
+          {{ ms }}
+        </li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-header">List of Files</div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"
+          v-for="(file, index) in fileInfos"
+          :key="index"
+        >
+          <a :href="file.url">{{ file.name }}</a>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
-
 <script>
-import http from "@/http-common";
 import { bus } from "@/event-bus";
-
+import UploadService from "../services/UploadFileService";
 export default {
-  name: "FileUpload",
+  name: "upload-files",
   data() {
     return {
       selectedFiles: undefined,
       currentFile: undefined,
       progress: 0,
       message: "",
+      fileInfos: []
     };
   },
   methods: {
     selectFile() {
-      this.selectedFiles = this.$refs.file.files;
+      this.progressInfos = [];
+      this.selectedFiles = event.target.files;
     },
-    upload() {
-      this.progress = 0;
-      this.currentFile = this.selectedFiles.item(0);
-      console.log(this.selectedFile);
-      let formData = new FormData();
-      formData.append("file", this.currentFile);
-      return http
-        .post("/upload", formData, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        })
+    uploadFiles() {
+      this.message = "";
+
+      for (let i = 0; i < this.selectedFiles.length; i++) {
+        this.upload(i, this.selectedFiles[i]);
+      }
+    },
+    upload(idx, file) {
+      this.progressInfos[idx] = { percentage: 0, fileName: file.name };
+
+      UploadService.upload(file, (event) => {
+        this.progressInfos[idx].percentage = Math.round(100 * event.loaded / event.total);
+      })
         .then((response) => {
           console.log("Success!");
           bus.$emit("upload-success");
           console.log(response.data);
         })
         .catch(() => {
-          this.progress = 0;
-          this.message = "Could not upload the file!";
-          this.currentFile = undefined;
+          this.progressInfos[idx].percentage = 0;
+          this.message = "Could not upload the file:" + file.name;
         });
-    },
+    }
   },
+  mounted() {
+    UploadService.getFiles().then(response => {
+      this.fileInfos = response.data;
+    });
+  }
 };
 </script>
 <style scoped>

@@ -15,7 +15,7 @@ class UploadFileService{
     }
 
     getFiles() {
-        return http.get("/files")
+        return http.get("/analysis")
     }
 }
 export default new UploadFileService();

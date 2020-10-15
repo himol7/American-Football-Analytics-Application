@@ -36,8 +36,8 @@ def validate_extension(filename):
 def upload_files():
     if request.method == 'POST':
         # logic to clean the folder
-        clean_directory(os.path.join(app.config['UPLOAD_FOLDER']))
-        clean_directory(os.path.join(app.config['DOWNLOAD_FOLDER']))
+        #clean_directory(os.path.join(app.config['UPLOAD_FOLDER']))
+        #clean_directory(os.path.join(app.config['DOWNLOAD_FOLDER']))
         # check if the request comes with the input file
         if 'file' not in request.files:
             flash('No file part')
@@ -55,7 +55,18 @@ def upload_files():
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             # call the driver function
-            ar = afaaRunner(os.path.join(app.config['UPLOAD_FOLDER'], file.filename), app.config['DOWNLOAD_FOLDER'])
+            print(os.path.join(app.config['UPLOAD_FOLDER'], file.filename)) 
+            print('input file')
+            print(app.config['DOWNLOAD_FOLDER'])
+            print('download path')
+            filelist = []
+            for file in listdir(app.config["UPLOAD_FOLDER"]):
+                absolute_name = os.path.join(app.config["UPLOAD_FOLDER"],file)
+                if(absolute_name not in filelist):
+                    filelist.append(absolute_name)
+            print(filelist)
+            ar = afaaRunner(filelist, app.config['DOWNLOAD_FOLDER'])
+            
             response = jsonify({'message': 'files saved and runner function called'})
             response.headers.add('Access-Control-Allow-Origin', '*')
             return response

@@ -1,1 +1,0 @@
-This is the input folder for csv files.
